@@ -2,6 +2,9 @@
 
 Work to build a game using JavaScript and Web APIs.
 
+## Application Design
+![Word Guessing Game](./assets/images/Word-GuessGame.png)
+
 ## Instructions
 
 The completed application should meet the following criteria:
@@ -45,9 +48,3 @@ Refer to the documentation:
 * [MDN Web Docs on clearInterval()](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearInterval)
 
 * [MDN Web Docs on localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
-
-## 🏆 Bonus
-
-If you have completed this activity, work through the following challenge with your group to further your knowledge:
-
-* How can you add a reset button to set the win and loss counts back to zero? 

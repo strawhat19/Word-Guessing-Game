@@ -41,7 +41,6 @@ resetScoreButton.addEventListener('click', function(event) {
 
 })
 
-
 // Start Game on Button Click
 startButton.addEventListener('click', function(event) {
 
@@ -72,7 +71,7 @@ startButton.addEventListener('click', function(event) {
             // Initiate Begin Game Button as Restart Game Button
             startButton.setAttribute('href','/');
             startButton.innerHTML = 'Again?';
-            startButton.addEventListener('click', function() {
+            startButton.addEventListener('click', function(event) {
                 location.reload(true);
             })
 
@@ -80,14 +79,11 @@ startButton.addEventListener('click', function(event) {
             userLosses++;
             losses.innerHTML = userLosses;
             localStorage.setItem('User Losses', userLosses);
-           
             losses.innerHTML = userLosses;
 
         }
 
-
-
-        // End Count Down Timer Function
+        // End Count Down Timer Interval Function
     }, 1000); // Sets the function to run on a 1000 ms // 1 second delay
 
 });
