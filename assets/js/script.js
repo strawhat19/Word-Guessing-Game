@@ -15,6 +15,12 @@ var resetScoreButton = document.querySelector('.reset-button');
 var timer = document.querySelector('.timer-count');
 var timeRemaining = 10;
 var secondsRemaining = document.querySelector('.timer-text').children[1];
+var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+
+// Game Variables
+var gameWords = ['javascript','python','csharp','css','sql','ruby','kotlin','html','json','java','cplusplus','sass'];
+var randomWord = '';
+var wordStatus = null;
 
 // Page Load Functions
 // Render User Losses Function Invokation
@@ -40,6 +46,16 @@ resetScoreButton.addEventListener('click', function(event) {
     // localStorage.clear();
 
 })
+
+// Random Word Generation
+function randomWordGenerator() {
+    randomWord = gameWords[Math.floor(Math.random() * gameWords.length)];
+}
+
+// Guess Word Function
+function guessedWord() {
+    wordStatus = randomWord.split('').map();
+}
 
 // Start Game on Button Click
 startButton.addEventListener('click', function(event) {
@@ -87,3 +103,5 @@ startButton.addEventListener('click', function(event) {
     }, 1000); // Sets the function to run on a 1000 ms // 1 second delay
 
 });
+
+randomWordGenerator();
