@@ -14,4 +14,4 @@ startButton.addEventListener("click", function(event) {
         timeRemaining -= 1;
     }, 1000);
 
-})
+});
