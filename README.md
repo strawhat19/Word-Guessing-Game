@@ -2,6 +2,9 @@
 
 Work to build a game using JavaScript and Web APIs.
 
+## Application Link
+https://strawhat19.github.io/Word-Guessing-Game/
+
 ## Application Design
 ![Word Guessing Game](./assets/images/Word-GuessGame.png)
 
