@@ -1,6 +1,6 @@
-# Unit 04 Mini-Project: Word Guess
+# Word Guess
 
-In this activity, you will work with a group to build a game using JavaScript and Web APIs.
+Work to build a game using JavaScript and Web APIs.
 
 ## Instructions
 
@@ -51,9 +51,3 @@ Refer to the documentation:
 If you have completed this activity, work through the following challenge with your group to further your knowledge:
 
 * How can you add a reset button to set the win and loss counts back to zero? 
-
-Use [Google](https://www.google.com) or another search engine to research this.
-
----
-
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
