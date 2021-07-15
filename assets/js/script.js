@@ -10,6 +10,8 @@ var card = document.querySelector('.word-guess');
 var wordBlanks = document.querySelector('.word-blanks');
 var wins = document.querySelector('.win');
 var userWins = 0;
+var points = document.querySelector('.point-score');
+var userPoints = 0;
 var losses = document.querySelector('.lose');
 var userLosses = 0;
 var resetScoreButton = document.querySelector('.reset-button');
@@ -21,14 +23,12 @@ var secondsRemaining = document.querySelector('.timer-text').children[1];
 var gameWords = ['javascript','python','csharp','css','sql','ruby','kotlin','html','json','java','cplusplus','sass'];
 var randomWord = gameWords[Math.floor(Math.random() * gameWords.length)];
 var guessed = [];
-for (var i = 0; i < randomWord.length; i++) {
-    guessed[i] = '_';
-}
 
 // Page Load Functions
 randomWordGenerator();
-renderUserLosses();
 guessedWord();
+renderUserLosses();
+renderUserWins();
 
 // Random Word Generation
 function randomWordGenerator() {
@@ -49,29 +49,63 @@ function handleChosenLetter(chosenLetter) {
     var guessBlanks = document.querySelectorAll('.guess');
 
     // Main Game Letter Checker
-    for (var j = 0; j < randomWord.length; j++) {
-        if (chosenLetter === randomWord[j]) {
+    for (var i = 0; i < randomWord.length; i++) {
 
-            guessed[j] = chosenLetter;
-            guessBlanks[j].innerHTML = chosenLetter;
+        if (chosenLetter === randomWord[i]) {
+            guessed[i] = chosenLetter;
+            guessBlanks[i].innerHTML = chosenLetter;
             // Toggle Class on Blank Fill
-            guessBlanks[j].classList.toggle('filled');
-
-            // Check if Game is Won
-            // Creating Array to Measure Length on Toggled Class
-            var filledBlanks = document.querySelectorAll('.filled');
-            var filledBlanksLength = filledBlanks.length;
-            var randomWordLength = randomWord.split('').length;
-            
-            if (filledBlanksLength === randomWordLength) {
-                console.log('Correct!');
-            }
+            guessBlanks[i].classList.add('filled');
         }
-        guessed.push(chosenLetter);
+
+         // Check if Game is Won
+        // Creating Array to Measure Length on Toggled Class
+        var filledBlanks = document.querySelectorAll('.filled');
+        var filledBlanksLength = filledBlanks.length;
+        var randomWordLength = randomWord.split('').length;
+
+        if (timeRemaining < 10 && timeRemaining > 0) {
+
+            if (filledBlanksLength === randomWordLength) {
+
+                console.log('Correct!');
+
+                for (var k = 0; k < gameWords.length; k++) {
+                    var newRandomWord = gameWords[Math.floor(Math.random() * gameWords.length)];
+                    randomWord = newRandomWord;
+                    randomWordGenerator();
+                    guessedWord();
+                }
+
+                // Store Win Local Storage
+                if (userPoints < gameWords.length) {
+                    
+                    userPoints++;
+                    points.innerHTML = userPoints;
+
+                    // Timer Increment
+                    timeRemaining++;
+                    timer.innerHTML = timeRemaining;
+                    startButton.innerHTML = 'In Game ' + timeRemaining;
+
+                    if (userPoints === gameWords.length) {
+                        userWins++;
+                        localStorage.setItem('User Wins', userWins);
+                        wins.innerHTML = userWins;
+                        userPoints = 0;
+                        points.innerHTML = userPoints;
+                        return;
+                    }
+
+                }
+
+            }
+        
+        }
+        // guessed.push(chosenLetter);
     }
     
 }
-
 
 // Render User Losses Function Definition
 function renderUserLosses() {
@@ -81,7 +115,17 @@ function renderUserLosses() {
     } else {
         losses.innerHTML = 0;
     }
-  }
+}
+
+// Render User Wins Function Definition
+function renderUserWins() {
+    userWins = localStorage.getItem('User Wins');
+    if (userWins > 0) {
+    wins.innerHTML = userWins;
+    } else {
+        wins.innerHTML = 0;
+    }
+}
 
 // Reset Score Function
 resetScoreButton.addEventListener('click', function resetScoreButtonClicked(event) {
@@ -89,9 +133,13 @@ resetScoreButton.addEventListener('click', function resetScoreButtonClicked(even
     // Local Storage Reset
     // Reset Losses
     userLosses = localStorage.getItem('User Losses');
+    userWins = localStorage.getItem('User Wins');
+    userWins = 0;
     userLosses = 0;
     localStorage.setItem('User Losses', userLosses);
+    localStorage.setItem('User Wins', userWins);
     losses.innerHTML = 0;
+    wins.innerHTML = 0;
 
     // Initiate Reset Score Button as Clear Everything Button
     resetScoreButton.setAttribute('href','/');
@@ -151,7 +199,6 @@ startButton.addEventListener('click', function(event) {
 
             // Store Loss Local Storage
             userLosses++;
-            losses.innerHTML = userLosses;
             localStorage.setItem('User Losses', userLosses);
             losses.innerHTML = userLosses;
 
