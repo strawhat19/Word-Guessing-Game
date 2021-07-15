@@ -78,12 +78,13 @@ function handleChosenLetter(chosenLetter) {
                     userPoints++;
                     points.innerHTML = userPoints;
                     localStorage.setItem('User Points', userPoints);
+                    isWin = true;
 
                     // for (var k = 0; k < gameWords.length; k++) {
-                        var newRandomWord = gameWords[Math.floor(Math.random() * gameWords.length)];
-                        randomWord = newRandomWord;
-                        wordStatus = newRandomWord.split('').map(letter => (newRandomWord.split('').indexOf(letter) >= 0 ? letter: '<div class="guess">_</div>')).join('');
-                        isWin = true;
+                        // var newRandomWord = gameWords[Math.floor(Math.random() * gameWords.length)];
+                        // randomWord = newRandomWord;
+                        // wordStatus = newRandomWord.split('').map(letter => (newRandomWord.split('').indexOf(letter) >= 0 ? letter: '<div class="guess">_</div>')).join('');
+                        
                     // }
 
                     // Timer Increment
@@ -193,12 +194,11 @@ startButton.addEventListener('click', function(event) {
 
         // If User Wins
         if (isWin) {
-            wordBlanks.innerHTML = wordStatus;
+            wordBlanks.innerHTML = randomWord;
             clearInterval(countDownTimer);
             titleText.innerHTML = 'You Guessed It!';
             timer.innerHTML = timeRemaining;
             startButton.innerHTML = 'Time Left: ' + timeRemaining;
-            wordBlanks.innerHTML = wordStatus;
             return;
         }
 
