@@ -21,10 +21,27 @@ var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p',
 var gameWords = ['javascript','python','csharp','css','sql','ruby','kotlin','html','json','java','cplusplus','sass'];
 var randomWord = '';
 var wordStatus = null;
+var guessed = [];
 
 // Page Load Functions
 // Render User Losses Function Invokation
 renderUserLosses();
+randomWordGenerator();
+guessedWord();
+
+// Random Word Generation
+function randomWordGenerator() {
+    randomWord = gameWords[Math.floor(Math.random() * gameWords.length)];
+    wordBlanks.innerHTML = randomWord;
+}
+
+// Guess Word Function
+function guessedWord() {
+    wordStatus = wordBlanks.innerHTML.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter: '_')).join(' ');
+    console.log('The Randomly Generated Word is ' + randomWord);
+    console.log('The blanks are as follows: ' + wordStatus);
+    wordBlanks.innerHTML = wordStatus;
+}
 
 // Render User Losses Function Definition
 function renderUserLosses() {
@@ -46,16 +63,6 @@ resetScoreButton.addEventListener('click', function(event) {
     // localStorage.clear();
 
 })
-
-// Random Word Generation
-function randomWordGenerator() {
-    randomWord = gameWords[Math.floor(Math.random() * gameWords.length)];
-}
-
-// Guess Word Function
-function guessedWord() {
-    wordStatus = randomWord.split('').map();
-}
 
 // Start Game on Button Click
 startButton.addEventListener('click', function(event) {
@@ -88,6 +95,7 @@ startButton.addEventListener('click', function(event) {
             startButton.setAttribute('href','/');
             startButton.innerHTML = 'Again?';
             startButton.addEventListener('click', function(event) {
+                // Hard Refreshes the Current Page
                 location.reload(true);
             })
 
@@ -103,5 +111,3 @@ startButton.addEventListener('click', function(event) {
     }, 1000); // Sets the function to run on a 1000 ms // 1 second delay
 
 });
-
-randomWordGenerator();
