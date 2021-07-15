@@ -25,6 +25,7 @@ var guessed = [];
 var chosenLetter = document.addEventListener('keydown',function(event){
     chosenLetter = event.key;
     console.log(chosenLetter);
+    handleChosenLetter(chosenLetter);
 });
 
 // Page Load Functions
@@ -41,21 +42,17 @@ function randomWordGenerator() {
 
 // Guess Word Function
 function guessedWord() {
-    wordStatus = wordBlanks.innerHTML.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter: ' _ ')).join(' ');
+    wordStatus = wordBlanks.innerHTML.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter: '<li class="guess">_</li>')).join(' ');
     console.log('The Randomly Generated Word is: ' + randomWord);
-    console.log('The blanks are as follows: ' + wordStatus);
     wordBlanks.innerHTML = wordStatus;
 }
 
 // Handle Chosen Letter by the User
 function handleChosenLetter(chosenLetter) {
-    guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
-
-    if (wordBlanks.innerHTML.split('').indexOf(chosenLetter) >= 0) {
-        guessedWord();
-        checkIfGameWon();
-    } else if (wordBlanks.innerHTML.split('').indexOf(chosenLetter) === -1) {
-        console.log('Guessed Wrong!');
+    if (chosenLetter = wordStatus) {
+        var guessBlank = document.querySelector('.guess');
+        chosenLetter = event.key;
+        guessBlank.innerHTML = chosenLetter;
     }
 }
 
