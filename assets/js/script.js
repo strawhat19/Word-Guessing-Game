@@ -6,6 +6,7 @@ console.log('Press the button when you are ready.');
 // Declaring Variables
 var titleText = document.querySelector('.large-font');
 var startButton = document.querySelector('.start-button');
+var card = document.querySelector('.word-guess');
 var wordBlanks = document.querySelector('.word-blanks');
 var wins = document.querySelector('.win');
 var userWins = 0;
@@ -36,7 +37,7 @@ function randomWordGenerator() {
 
 // Guess Word Function
 function guessedWord() {
-    wordStatus = wordBlanks.innerHTML.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter: '<li class="guess">_</li>')).join(' ');
+    wordStatus = wordBlanks.innerHTML.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter: '<div class="guess">_</div>')).join(' ');
     console.log('The Randomly Generated Word is: ' + randomWord);
     wordBlanks.innerHTML = wordStatus;
 }
@@ -45,39 +46,41 @@ function guessedWord() {
 function handleChosenLetter(chosenLetter) {
 
     // Declaring Blanks as Variables in an Array
-    var guessBlank = document.querySelectorAll('.guess');
+    var guessBlanks = document.querySelectorAll('.guess');
 
     // Main Game Letter Checker
     for (var j = 0; j < randomWord.length; j++) {
         if (chosenLetter === randomWord[j]) {
+
             guessed[j] = chosenLetter;
-            guessBlank[j].innerHTML = chosenLetter;
+            guessBlanks[j].innerHTML = chosenLetter;
+            // Toggle Class on Blank Fill
+            guessBlanks[j].classList.toggle('filled');
+
+            // Check if Game is Won
+            // Creating Array to Measure Length on Toggled Class
+            var filledBlanks = document.querySelectorAll('.filled');
+            var filledBlanksLength = filledBlanks.length;
+            var randomWordLength = randomWord.split('').length;
+            
+            if (filledBlanksLength === randomWordLength) {
+                console.log('Correct!');
+            }
         }
         guessed.push(chosenLetter);
     }
     
 }
 
-// Check if Game is Won
-function checkIfGameWon() {
-    console.log(randomWord);
-    console.log(wordStatus);
-    if (wordStatus === randomWord) {
-      console.log('You Won!');
-      resetScoreButtonClicked();
-    }
-  }
 
 // Render User Losses Function Definition
 function renderUserLosses() {
-
     userLosses = localStorage.getItem('User Losses');
     if (userLosses > 0) {
     losses.innerHTML = userLosses;
     } else {
         losses.innerHTML = 0;
     }
-
   }
 
 // Reset Score Function
@@ -115,7 +118,7 @@ startButton.addEventListener('click', function(event) {
     });
 
     // Start Timer on Button Click
-    var countDownTimer = setInterval(function() {
+    var countDownTimer = setInterval(function(guessBlanks) {
 
         // Decrement the Timer to Count Downwards
         timeRemaining--;

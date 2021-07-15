@@ -42,6 +42,7 @@ button {
   margin-top: 0.6em;
 }
 
+/* Made a minor change here for style purposes */
 .activeGameButton {
   background-image: radial-gradient(circle, rgb(158 38 38) 0%, rgb(255 0 0 / 95%) 100%);
   font-size: 1.5em;
@@ -72,6 +73,18 @@ section {
 .word-guess {
   width: 55vw;
   height: 400px;
+  position: relative;
+}
+
+/* Made a minor change here for style purposes */
+.card.word-guess::before {
+  content: 'PROGRAMMING LANGUAGES';
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  letter-spacing: 1.8px;
+  position: absolute;
+  width: 100%;
+  margin-left: -20px;
 }
 
 .results {
@@ -100,6 +113,7 @@ section {
   justify-content: space-evenly;
 }
 
+/* Made a minor change here for style purposes */
 .guess {
   list-style: none;
 }
