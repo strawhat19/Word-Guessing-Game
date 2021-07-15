@@ -15,21 +15,14 @@ var resetScoreButton = document.querySelector('.reset-button');
 var timer = document.querySelector('.timer-count');
 var timeRemaining = 10;
 var secondsRemaining = document.querySelector('.timer-text').children[1];
-var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
 // Game Variables
 var gameWords = ['javascript','python','csharp','css','sql','ruby','kotlin','html','json','java','cplusplus','sass'];
 var randomWord = gameWords[Math.floor(Math.random() * gameWords.length)];
-var remainingLetters = randomWord.length;
 var guessed = [];
 for (var i = 0; i < randomWord.length; i++) {
     guessed[i] = '_';
 }
-var chosenLetter = document.addEventListener('keydown',function(event){
-    chosenLetter = event.key;
-    console.log(chosenLetter);
-    handleChosenLetter(chosenLetter);
-});
 
 // Page Load Functions
 randomWordGenerator();
@@ -50,12 +43,14 @@ function guessedWord() {
 
 // Handle Chosen Letter by the User
 function handleChosenLetter(chosenLetter) {
+
+    // Declaring Blanks as Variables in an Array
     var guessBlank = document.querySelectorAll('.guess');
 
+    // Main Game Letter Checker
     for (var j = 0; j < randomWord.length; j++) {
         if (chosenLetter === randomWord[j]) {
             guessed[j] = chosenLetter;
-            remainingLetters--;
             guessBlank[j].innerHTML = chosenLetter;
         }
         guessed.push(chosenLetter);
@@ -75,8 +70,14 @@ function checkIfGameWon() {
 
 // Render User Losses Function Definition
 function renderUserLosses() {
+
     userLosses = localStorage.getItem('User Losses');
+    if (userLosses > 0) {
     losses.innerHTML = userLosses;
+    } else {
+        losses.innerHTML = 0;
+    }
+
   }
 
 // Reset Score Function
@@ -89,8 +90,16 @@ resetScoreButton.addEventListener('click', function resetScoreButtonClicked(even
     localStorage.setItem('User Losses', userLosses);
     losses.innerHTML = 0;
 
-    // Clear Local Storage
-    // localStorage.clear();
+    // Initiate Reset Score Button as Clear Everything Button
+    resetScoreButton.setAttribute('href','/');
+    resetScoreButton.innerHTML = 'Clear Everything';
+    resetScoreButton.addEventListener('click', function(event) {
+        // Hard Refreshes the Current Page
+        location.reload(true);
+
+        // Clear Local Storage
+        localStorage.clear();
+    })
 
 })
 
@@ -98,7 +107,12 @@ resetScoreButton.addEventListener('click', function resetScoreButtonClicked(even
 startButton.addEventListener('click', function(event) {
 
     // Begin Game Function
-    startButton.innerHTML = 'In Game';
+    // Declaring Chosen Letter Variable on Key Down Press
+    var chosenLetter = document.addEventListener('keydown',function(event){
+        chosenLetter = event.key;
+        console.log(chosenLetter);
+        handleChosenLetter(chosenLetter);
+    });
 
     // Start Timer on Button Click
     var countDownTimer = setInterval(function() {
@@ -110,6 +124,8 @@ startButton.addEventListener('click', function(event) {
         if (timeRemaining >= 0) {
             titleText.innerHTML = 'Guess The Word';
             timer.innerHTML = timeRemaining;
+            startButton.classList.add('activeGameButton');
+            startButton.innerHTML = 'In Game ' + timeRemaining;
         }
 
         // If the Timer Hits 0
@@ -122,6 +138,7 @@ startButton.addEventListener('click', function(event) {
             clearInterval(countDownTimer);
 
             // Initiate Begin Game Button as Restart Game Button
+            startButton.classList.remove('activeGameButton');
             startButton.setAttribute('href','/');
             startButton.innerHTML = 'Again?';
             startButton.addEventListener('click', function(event) {

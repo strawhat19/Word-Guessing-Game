@@ -42,6 +42,11 @@ button {
   margin-top: 0.6em;
 }
 
+.activeGameButton {
+  background-image: radial-gradient(circle, rgb(158 38 38) 0%, rgb(255 0 0 / 95%) 100%);
+  font-size: 1.5em;
+}
+
 header {
   padding: 40px;
   text-align: center;
