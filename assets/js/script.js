@@ -19,9 +19,12 @@ var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p',
 
 // Game Variables
 var gameWords = ['javascript','python','csharp','css','sql','ruby','kotlin','html','json','java','cplusplus','sass'];
-var randomWord = '';
-var wordStatus = null;
+var randomWord = gameWords[Math.floor(Math.random() * gameWords.length)];
+var remainingLetters = randomWord.length;
 var guessed = [];
+for (var i = 0; i < randomWord.length; i++) {
+    guessed[i] = '_';
+}
 var chosenLetter = document.addEventListener('keydown',function(event){
     chosenLetter = event.key;
     console.log(chosenLetter);
@@ -29,13 +32,12 @@ var chosenLetter = document.addEventListener('keydown',function(event){
 });
 
 // Page Load Functions
-renderUserLosses();
 randomWordGenerator();
+renderUserLosses();
 guessedWord();
 
 // Random Word Generation
 function randomWordGenerator() {
-    randomWord = gameWords[Math.floor(Math.random() * gameWords.length)];
     wordBlanks.innerHTML = randomWord;
 }
 
@@ -48,16 +50,17 @@ function guessedWord() {
 
 // Handle Chosen Letter by the User
 function handleChosenLetter(chosenLetter) {
-    chosenLetter = event.key;
-    var guessBlank = document.querySelector('.guess');
-    for (var i = 0; i < wordBlanks.innerHTML.split('').length; i++) {
-        if (wordBlanks.innerHTML.split('')[i] === "_") {
-          guessBlank.innerHTML = "_";
-        } else {
-          guessBlank.innerHTML = chosenLetter;
+    var guessBlank = document.querySelectorAll('.guess');
+
+    for (var j = 0; j < randomWord.length; j++) {
+        if (chosenLetter === randomWord[j]) {
+            guessed[j] = chosenLetter;
+            remainingLetters--;
+            guessBlank[j].innerHTML = chosenLetter;
         }
         guessed.push(chosenLetter);
-      }
+    }
+    
 }
 
 // Check if Game is Won
