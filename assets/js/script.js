@@ -18,6 +18,7 @@ var resetScoreButton = document.querySelector('.reset-button');
 var timer = document.querySelector('.timer-count');
 var timeRemaining = 10;
 var secondsRemaining = document.querySelector('.timer-text').children[1];
+var isWin = false;
 
 // Game Variables
 var gameWords = ['javascript','python','csharp','css','sql','ruby','kotlin','html','json','java','cplusplus','sass'];
@@ -29,6 +30,7 @@ randomWordGenerator();
 guessedWord();
 renderUserLosses();
 renderUserWins();
+renderUserPoints();
 
 // Random Word Generation
 function randomWordGenerator() {
@@ -37,7 +39,7 @@ function randomWordGenerator() {
 
 // Guess Word Function
 function guessedWord() {
-    wordStatus = wordBlanks.innerHTML.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter: '<div class="guess"> _ </div>')).join(' ');
+    wordStatus = wordBlanks.innerHTML.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter: '<div class="guess">_</div>')).join('');
     console.log('The Randomly Generated Word is: ' + randomWord);
     wordBlanks.innerHTML = wordStatus;
 }
@@ -70,20 +72,19 @@ function handleChosenLetter(chosenLetter) {
 
                 console.log('Correct!');
 
-                for (var k = 0; k < gameWords.length; k++) {
-                    var newRandomWord = gameWords[Math.floor(Math.random() * gameWords.length)];
-                    randomWord = newRandomWord;
-                    wordStatus = wordBlanks.innerHTML.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter:'<div class="guess"> _ </div>')).join(' ');
-                    randomWordGenerator();
-                    guessedWord();
-                    // handleChosenLetter();
-                }
-
                 // Store Win Local Storage
                 if (userPoints < gameWords.length) {
                     
                     userPoints++;
                     points.innerHTML = userPoints;
+                    localStorage.setItem('User Points', userPoints);
+
+                    // for (var k = 0; k < gameWords.length; k++) {
+                        var newRandomWord = gameWords[Math.floor(Math.random() * gameWords.length)];
+                        randomWord = newRandomWord;
+                        wordStatus = newRandomWord.split('').map(letter => (newRandomWord.split('').indexOf(letter) >= 0 ? letter: '<div class="guess">_</div>')).join('');
+                        isWin = true;
+                    // }
 
                     // Timer Increment
                     timeRemaining++;
@@ -104,7 +105,7 @@ function handleChosenLetter(chosenLetter) {
             }
         
         }
-        // guessed.push(chosenLetter);
+        guessed.push(chosenLetter);
     }
     
 }
@@ -129,11 +130,20 @@ function renderUserWins() {
     }
 }
 
+function renderUserPoints() {
+    userPoints = localStorage.getItem('User Points');
+    if (userPoints > 0) {
+    points.innerHTML = userPoints;
+    } else {
+        points.innerHTML = 0;
+    }
+}
+
 // Reset Score Function
 resetScoreButton.addEventListener('click', function resetScoreButtonClicked(event) {
 
     // Local Storage Reset
-    // Reset Losses // Reset Wins
+    // Reset Losses
     userLosses = localStorage.getItem('User Losses');
     userWins = localStorage.getItem('User Wins');
     userWins = 0;
@@ -179,6 +189,17 @@ startButton.addEventListener('click', function(event) {
             timer.innerHTML = timeRemaining;
             startButton.classList.add('activeGameButton');
             startButton.innerHTML = 'In Game ' + timeRemaining;
+        }
+
+        // If User Wins
+        if (isWin) {
+            wordBlanks.innerHTML = wordStatus;
+            clearInterval(countDownTimer);
+            titleText.innerHTML = 'You Guessed It!';
+            timer.innerHTML = timeRemaining;
+            startButton.innerHTML = 'Time Left: ' + timeRemaining;
+            wordBlanks.innerHTML = wordStatus;
+            return;
         }
 
         // If the Timer Hits 0
