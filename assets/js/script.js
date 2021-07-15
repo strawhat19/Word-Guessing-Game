@@ -22,12 +22,16 @@ var gameWords = ['javascript','python','csharp','css','sql','ruby','kotlin','htm
 var randomWord = '';
 var wordStatus = null;
 var guessed = [];
+var chosenLetter = document.addEventListener('keydown',function(event){
+    chosenLetter = event.key;
+    console.log(chosenLetter);
+});
 
 // Page Load Functions
-// Render User Losses Function Invokation
 renderUserLosses();
 randomWordGenerator();
 guessedWord();
+handleChosenLetter(chosenLetter);
 
 // Random Word Generation
 function randomWordGenerator() {
@@ -37,11 +41,33 @@ function randomWordGenerator() {
 
 // Guess Word Function
 function guessedWord() {
-    wordStatus = wordBlanks.innerHTML.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter: '_')).join(' ');
-    console.log('The Randomly Generated Word is ' + randomWord);
+    wordStatus = wordBlanks.innerHTML.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter: ' _ ')).join(' ');
+    console.log('The Randomly Generated Word is: ' + randomWord);
     console.log('The blanks are as follows: ' + wordStatus);
     wordBlanks.innerHTML = wordStatus;
 }
+
+// Handle Chosen Letter by the User
+function handleChosenLetter(chosenLetter) {
+    guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
+
+    if (wordBlanks.innerHTML.split('').indexOf(chosenLetter) >= 0) {
+        guessedWord();
+        checkIfGameWon();
+    } else if (wordBlanks.innerHTML.split('').indexOf(chosenLetter) === -1) {
+        console.log('Guessed Wrong!');
+    }
+}
+
+// Check if Game is Won
+function checkIfGameWon() {
+    console.log(randomWord);
+    console.log(wordStatus);
+    if (wordStatus === randomWord) {
+      console.log('You Won!');
+      resetScoreButtonClicked();
+    }
+  }
 
 // Render User Losses Function Definition
 function renderUserLosses() {
@@ -50,7 +76,7 @@ function renderUserLosses() {
   }
 
 // Reset Score Function
-resetScoreButton.addEventListener('click', function(event) {
+resetScoreButton.addEventListener('click', function resetScoreButtonClicked(event) {
 
     // Local Storage Reset
     // Reset Losses
