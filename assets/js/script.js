@@ -37,7 +37,7 @@ function randomWordGenerator() {
 
 // Guess Word Function
 function guessedWord() {
-    wordStatus = wordBlanks.innerHTML.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter: '<div class="guess">_</div>')).join('');
+    wordStatus = wordBlanks.innerHTML.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter: '<div class="guess"> _ </div>')).join(' ');
     console.log('The Randomly Generated Word is: ' + randomWord);
     wordBlanks.innerHTML = wordStatus;
 }
@@ -73,10 +73,10 @@ function handleChosenLetter(chosenLetter) {
                 for (var k = 0; k < gameWords.length; k++) {
                     var newRandomWord = gameWords[Math.floor(Math.random() * gameWords.length)];
                     randomWord = newRandomWord;
-                    wordStatus = wordBlanks.innerHTML.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter:'<div class="guess">_</div>')).join('');
+                    wordStatus = wordBlanks.innerHTML.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter:'<div class="guess"> _ </div>')).join(' ');
                     randomWordGenerator();
                     guessedWord();
-                    handleChosenLetter(chosenLetter);
+                    // handleChosenLetter();
                 }
 
                 // Store Win Local Storage
