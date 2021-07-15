@@ -32,7 +32,6 @@ var chosenLetter = document.addEventListener('keydown',function(event){
 renderUserLosses();
 randomWordGenerator();
 guessedWord();
-handleChosenLetter(chosenLetter);
 
 // Random Word Generation
 function randomWordGenerator() {
@@ -49,11 +48,16 @@ function guessedWord() {
 
 // Handle Chosen Letter by the User
 function handleChosenLetter(chosenLetter) {
-    if (chosenLetter = wordStatus) {
-        var guessBlank = document.querySelector('.guess');
-        chosenLetter = event.key;
-        guessBlank.innerHTML = chosenLetter;
-    }
+    chosenLetter = event.key;
+    var guessBlank = document.querySelector('.guess');
+    for (var i = 0; i < wordBlanks.innerHTML.split('').length; i++) {
+        if (wordBlanks.innerHTML.split('')[i] === "_") {
+          guessBlank.innerHTML = "_";
+        } else {
+          guessBlank.innerHTML = chosenLetter;
+        }
+        guessed.push(chosenLetter);
+      }
 }
 
 // Check if Game is Won
