@@ -131,7 +131,17 @@ function renderUserPoints() {
     if (userPoints > 0 && userPoints < 10) {
         
         setTimeout(function startGame() {
-            // Declaring Chosen Letter Variable on Key Down Press
+
+    // When the user presses any key on the keyboard, run the function
+    document.addEventListener("keyup", function(event) {
+        // If "caps lock" is pressed, display the warning text
+            if (event.getModifierState("CapsLock")) {
+              alert('CAPS LOCK will interfere with gameplay, turn off CAPS LOCK.');
+            }
+        });
+
+    // Declaring Chosen Letter Variable on Key Down Press
+
     var chosenLetter = document.addEventListener('keydown',function(event){
         chosenLetter = event.key;
         console.log(chosenLetter);
@@ -139,10 +149,16 @@ function renderUserPoints() {
     });
 
     // Possible Words
-    possibleWords.innerHTML = gameWords.join(' | ');
+    for (var j = 0; j < gameWords.length; j++) {
+        var possibleWordDiv = document.createElement('div');
+        possibleWordDiv.classList.add('word');
+        possibleWordDiv.innerHTML = ' | ' + gameWords[j] + ' | ';
+        possibleWords.appendChild(possibleWordDiv);
+    }
     // Hints
-    if (randomWord === 'javascript') hints.innerHTML = 'The most wideley used scripting language for the web to manipulate theDOM.';
-    if (randomWord === 'python') hints.innerHTML = 'The most popular programming language in the world, can be used to make anything.';
+    var javascript = 'The most wideley used scripting language for the web to manipulate theDOM.'
+    if (randomWord === 'javascript') hints.innerHTML = javascript;
+    if (randomWord === 'python') hints.innerHTML = 'The most popular programming language in the world, can be used to make anything. NAMED AFTER A REPTILE.';
     if (randomWord === 'css') hints.innerHTML = 'Cascading Style Sheets, how we style the html we put on a page.';
     if (randomWord === 'less') hints.innerHTML = 'A CSS Preprocessor, LESSer known than its alternative.';
     if (randomWord === 'sass') hints.innerHTML = 'A CSS Preprocessor, makes writing CSS much more modular.';
@@ -310,10 +326,24 @@ startButton.addEventListener('click', function startGame(event) {
         handleChosenLetter(chosenLetter);
     });
 
+    // When the user presses any key on the keyboard, run the function
+    document.addEventListener("keyup", function(event) {
+    // If "caps lock" is pressed, display the warning text
+        if (event.getModifierState("CapsLock")) {
+          alert('CAPS LOCK will interfere with gameplay, turn off CAPS LOCK for best results.');
+        }
+    });
+
     // Possible Words
-    possibleWords.innerHTML = gameWords.join(' | ');
+    for (var j = 0; j < gameWords.length; j++) {
+        var possibleWordDiv = document.createElement('div');
+        possibleWordDiv.classList.add('word');
+        possibleWordDiv.innerHTML = ' | ' + gameWords[j] + ' | ';
+        possibleWords.appendChild(possibleWordDiv);
+    }
     // Hints
-    if (randomWord === 'javascript') hints.innerHTML = 'The most wideley used scripting language for the web to manipulate theDOM.';
+    var javascript = 'The most wideley used scripting language for the web to manipulate theDOM.'
+    if (randomWord === 'javascript') hints.innerHTML = javascript;
     if (randomWord === 'python') hints.innerHTML = 'The most popular programming language in the world, can be used to make anything.';
     if (randomWord === 'css') hints.innerHTML = 'Cascading Style Sheets, how we style the html we put on a page.';
     if (randomWord === 'less') hints.innerHTML = 'A CSS Preprocessor, LESSer known than its alternative.';

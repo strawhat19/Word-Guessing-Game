@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  transition: 300ms ease-in-out;
 }
 
 body {
@@ -24,6 +25,14 @@ body {
 #possibleWords, #hints {
   line-height: 1.8;
   padding: 15px;
+}
+
+#possibleWords {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 30px;
 }
 
 .reset-button {
@@ -96,7 +105,7 @@ section {
 
 /* Made a minor change here for style purposes */
 .card.word-guess::before {
-  content: 'WEB DEV TERMS: 10 POINTS TO SCORE A WIN';
+  content: 'WEB DEV TERMS | 10 POINTS TO SCORE A WIN';
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   letter-spacing: 1.8px;
