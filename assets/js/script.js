@@ -73,6 +73,29 @@ var hosting = 'Service that allows individuals and organizations to make their w
 var vscode = 'A free text editor by Microsoft to edit and write code. This program comes with many handy keyboard shortcuts to make the development process much simpler and streamlined.';
 var inspector = 'Sometimes called Developer Tools or just DevTools. This is a feature available in most modern web browsers that allows a user to inspect the individual elements and sources of a website. Many developers teach themselves code by just messing with this.';
 
+var moreInfoLinks = [
+    'https://www.w3schools.com/jsref/default.asp', // Javascript
+    'https://www.w3schools.com/python/python_reference.asp', // Python
+    'https://www.w3schools.com/cs/cs_examples.php', // C#
+    'https://www.w3schools.com/cssref/', // CSS
+    'https://www.w3schools.com/sql/sql_quickref.asp', // SQL
+    'https://www.ruby-lang.org/en/documentation/', // Ruby
+    'https://www.w3schools.com/kotlin/kotlin_examples.php', // Kotlin
+    , // HTML
+    , // JSON
+    , // JAVA
+    , // C++
+    , // SASS
+    , // React.js
+    , // Angular.js
+    , // Node.js
+    , // jQuery
+    , // Azure
+    , // Bootstrap
+    , // React Native
+    , // Swift
+]
+
 // Hints
 function displayHints() {
     if (randomWord === 'javascript') hints.innerHTML = javascript;
@@ -115,17 +138,19 @@ function displayHints() {
 
 // Possible Words
 for (var j = 0; j < gameWords.length; j++) {
-    var possibleWordDiv = document.createElement('div');
+    var possibleWordDiv = document.createElement('a');
     possibleWordDiv.classList.add('word');
     possibleWordDiv.classList.add(gameWords[j]);
-    possibleWordDiv.innerHTML = ' | ' + gameWords[j] + ' | ';
+    possibleWordDiv.innerHTML = ' - ' + gameWords[j] + ' - ';
     possibleWords.appendChild(possibleWordDiv);
 
     var definitions = [javascript,python,csharp,css,sql,ruby,kotlin,html,json,java,cplusplus,sass,reactjs,angularjs,nodejs,jquery,azure,bootstrap,reactnative,swift,ionic,figma,adobe,website,mongodb,vuejs,less,wordpress,php,coredova,pwa,api,mariadb,hosting,vscode,inspector];
 
     var words = document.querySelectorAll('.word');
     words.forEach(word => {
-        words[j].setAttribute('title',definitions[j]);
+        words[j].setAttribute('target','_blank');
+        words[j].setAttribute('href',moreInfoLinks[j]);
+        words[j].setAttribute('data-definition',definitions[j]);
         words[j].setAttribute('alt',gameWords[j]);
     });
 }
