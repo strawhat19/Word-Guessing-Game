@@ -73,31 +73,25 @@ function handleChosenLetter(chosenLetter) {
                 console.log('Correct!');
 
                 // Store Win Local Storage
-                if (userPoints < gameWords.length) {
+                if (userPoints < 10) {
                     
                     userPoints++;
                     points.innerHTML = userPoints;
                     localStorage.setItem('User Points', userPoints);
                     isWin = true;
 
-                    // for (var k = 0; k < gameWords.length; k++) {
-                        // var newRandomWord = gameWords[Math.floor(Math.random() * gameWords.length)];
-                        // randomWord = newRandomWord;
-                        // wordStatus = newRandomWord.split('').map(letter => (newRandomWord.split('').indexOf(letter) >= 0 ? letter: '<div class="guess">_</div>')).join('');
-                        
-                    // }
-
                     // Timer Increment
                     timeRemaining++;
                     timer.innerHTML = timeRemaining;
                     startButton.innerHTML = 'In Game ' + timeRemaining;
 
-                    if (userPoints === gameWords.length) {
+                    if (userPoints >= 10) {
                         userWins++;
                         localStorage.setItem('User Wins', userWins);
                         wins.innerHTML = userWins;
                         userPoints = 0;
                         points.innerHTML = userPoints;
+                        document.reload();
                         return;
                     }
 
@@ -133,7 +127,7 @@ function renderUserWins() {
 
 function renderUserPoints() {
     userPoints = localStorage.getItem('User Points');
-    if (userPoints > 0) {
+    if (userPoints > 0 && userPoints < 10) {
         
         setTimeout(function startGame() {
             // Declaring Chosen Letter Variable on Key Down Press
@@ -166,7 +160,7 @@ function renderUserPoints() {
             startButton.innerHTML = 'Time Left: ' + timeRemaining;
             setTimeout(function reloadGame() {
                 location.reload(true);
-            }, 3000);
+            }, 1500);
             return;
         }
     
@@ -201,8 +195,13 @@ function renderUserPoints() {
         }, 100);
         
     points.innerHTML = userPoints;
-    } else {
-        points.innerHTML = 0;
+    } else if (localStorage.getItem('User Points') >= 10) {
+        // Reset Points
+        var userPointScore = localStorage.getItem('User Points');
+        userPointScore = 0;
+        points.innerHTML = userPointScore;
+        localStorage.setItem('User Points', userPointScore);
+        location.reload(true);
     }
 }
 
@@ -267,7 +266,7 @@ startButton.addEventListener('click', function startGame(event) {
             startButton.innerHTML = 'Time Left: ' + timeRemaining;
             setTimeout(function reloadGame() {
                 location.reload(true);
-            }, 5000);
+            }, 1500);
             return;
         }
     
