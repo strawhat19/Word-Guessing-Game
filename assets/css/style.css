@@ -27,11 +27,7 @@ body {
 
 .victory {
   background: #00cc80 !important;
-  /* background-size: 1800% 1800% !important;
-  -webkit-animation: rainbow 4s ease infinite !important;
-  -z-animation: rainbow 4s ease infinite !important;
-  -o-animation: rainbow 4s ease infinite !important;
-  animation: rainbow 4s ease infinite !important; */
+  transition: 300ms ease-in-out;
 }
 
 /* @-webkit-keyframes rainbow {
