@@ -41,6 +41,7 @@ body {
 
 #hintsSection {
   margin: 15px 0px;
+  max-width: 31.5vw;
 }
 
 #possibleWordsSection {
