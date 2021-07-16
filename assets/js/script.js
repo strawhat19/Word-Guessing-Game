@@ -204,8 +204,6 @@ function renderUserPoints() {
             yellowBG1.classList.add('victory');
             yellowBG2.classList.add('victory');
             startButtonAddClass.classList.add('victory');
-            gameWords = gameWords - randomWord;
-            possibleWords.innerHTML = gameWords.join(' | ');
             setTimeout(function reloadGame() {
                 location.reload(true);
             }, 1500);
@@ -337,8 +335,6 @@ startButton.addEventListener('click', function startGame(event) {
             yellowBG1.classList.add('victory');
             yellowBG2.classList.add('victory');
             startButtonAddClass.classList.add('victory');
-            gameWords = gameWords - randomWord;
-            possibleWords.innerHTML = gameWords.join(' | ');
             setTimeout(function reloadGame() {
                 location.reload(true);
             }, 1500);
