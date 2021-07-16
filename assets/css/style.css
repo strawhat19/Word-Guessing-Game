@@ -80,7 +80,7 @@ body {
   transition: 300ms ease-in-out !important;
   color: #fff;
   text-decoration: none;
-  margin: 0 5px;
+  margin: 5px;
 }
 
 .word:hover {
