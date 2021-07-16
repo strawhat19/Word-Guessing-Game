@@ -56,6 +56,12 @@ body {
   flex-direction: column;
 }
 
+#possibleWords {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
 #possible-words {
   font-size: 20px;
   letter-spacing: 1px;
@@ -74,6 +80,7 @@ body {
   transition: 300ms ease-in-out !important;
   color: #fff;
   text-decoration: none;
+  margin: 0 5px;
 }
 
 .word:hover {
