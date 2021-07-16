@@ -21,7 +21,7 @@ var secondsRemaining = document.querySelector('.timer-text').children[1];
 var isWin = false;
 
 // Game Variables
-var gameWords = ['javascript','python','csharp','css','sql','ruby','kotlin','html','json','java','cplusplus','sass'];
+var gameWords = ['javascript','python','csharp','css','sql','ruby','kotlin','html','json','java','cplusplus','sass','react.js','angular.js','node.js','jquery','azure','bootstrap','reactnative','swift','ionic','figma','adobe','website','mongodb','vue.js','less'];
 var randomWord = gameWords[Math.floor(Math.random() * gameWords.length)];
 var guessed = [];
 
@@ -91,7 +91,6 @@ function handleChosenLetter(chosenLetter) {
                         wins.innerHTML = userWins;
                         userPoints = 0;
                         points.innerHTML = userPoints;
-                        document.reload();
                         return;
                     }
 
@@ -201,7 +200,13 @@ function renderUserPoints() {
         userPointScore = 0;
         points.innerHTML = userPointScore;
         localStorage.setItem('User Points', userPointScore);
-        location.reload(true);
+        titleText.innerHTML = 'VICTORY!';
+        secondsRemaining.innerHTML = 'Congratulations!';
+        setTimeout(function reloadGame() {
+            location.reload(true);
+        }, 5000);
+    } else {
+        return;
     }
 }
 
@@ -278,6 +283,7 @@ startButton.addEventListener('click', function startGame(event) {
             titleText.innerHTML = 'DEFEAT';
             timer.innerHTML = 'GGWP';
             secondsRemaining.innerHTML = 'Game Over!';
+            wordBlanks.innerHTML = randomWord;
             clearInterval(countDownTimer);
 
             // Initiate Begin Game Button as Restart Game Button

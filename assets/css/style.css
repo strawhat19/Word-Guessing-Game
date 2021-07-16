@@ -77,7 +77,7 @@ section {
 
 /* Made a minor change here for style purposes */
 .card.word-guess::before {
-  content: 'PROGRAMMING LANGUAGES';
+  content: 'WEB DEV TERMS: 10 POINTS TO SCORE A WIN';
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   letter-spacing: 1.8px;
