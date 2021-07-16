@@ -202,9 +202,10 @@ function renderUserPoints() {
         localStorage.setItem('User Points', userPointScore);
         titleText.innerHTML = 'VICTORY!';
         secondsRemaining.innerHTML = 'Congratulations!';
+        wordBlanks.innerHTML = 'You Win! Reloading Game...';
         setTimeout(function reloadGame() {
             location.reload(true);
-        }, 5000);
+        }, 3000);
     } else {
         return;
     }
