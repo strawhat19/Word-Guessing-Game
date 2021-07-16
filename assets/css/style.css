@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  transition: 300ms ease-in-out;
+  transition: 100ms ease-in-out;
 }
 
 body {
@@ -33,6 +33,29 @@ body {
   align-items: center;
   flex-wrap: wrap;
   column-gap: 30px;
+}
+
+#possible-words-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#possible-words {
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+#possible-words-hover {
+  color: #efe48b;
+  font-size: 10px;
+  letter-spacing: 1px;
+  line-height: 18px;
+}
+
+.word {
+  font-size: 14px;
 }
 
 .reset-button {
@@ -92,7 +115,7 @@ main {
 section {
   flex: 0 auto;
   padding: 8px;
-  margin-top: 15px;
+  margin-top: 0px;
   background-color: white;
   border-radius: 8px;
 }

@@ -17,6 +17,7 @@ var userLosses = 0;
 var resetScoreButton = document.querySelector('.reset-button');
 var timer = document.querySelector('.timer-count');
 var timeRemaining = 10;
+timer.innerHTML = timeRemaining;
 var secondsRemaining = document.querySelector('.timer-text').children[1];
 var isWin = false;
 
@@ -33,6 +34,101 @@ guessedWord();
 renderUserLosses();
 renderUserWins();
 renderUserPoints();
+
+// Hint Definitions
+var javascript = 'The most wideley used scripting language for the web to manipulate theDOM.';
+var python = 'The most popular programming language in the world, can be used to make anything. NAMED AFTER A REPTILE.';
+var csharp = 'A very popular programming language in the C family, the main language used in Unity to make video games.';
+var css = 'Cascading Style Sheets, how we style the html we put on a page.';
+var sql = 'A domain-specific language used in programming and designed for managing data held in a relational database management system, or for stream processing in a relational data stream management system.';
+var ruby = 'Designed and developed in the mid-1990s by Yukihiro "Matz" Matsumoto in Japan. Dynamically typed and uses garbage collection and just-in-time compilation.';
+var kotlin =  'A cross-platform, statically typed, general-purpose programming language with type inference.';
+var html = 'The most widely used language for websites, every website has this as the basic skeleton for their content.';
+var json = 'An open standard file format and data interchange format that uses human-readable text to store and transmit data objects consisting of attribute–value pairs and arrays.';
+var java = 'Commonly mistaken for another popular web scripting language, this is a backend language used to manipulate data.';
+var cplusplus = 'A very powerful programming language in the C family used to make the more advanced applications as well as some of the most popular console games.';
+var sass = 'A CSS Preprocessor, makes writing CSS much more modular.';
+var reactjs = 'Front-end JavaScript library for building user interfaces or UI components. Owned & Maintained by Facebook.';
+var angularjs = 'A JavaScript-based open-source front-end web framework for developing single-page applications. It is maintained mainly by Google and a community of individuals and corporations.';
+var nodejs = 'An open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.';
+var jquery = 'A JavaScript library designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and Ajax. It is free, open-source software using the permissive MIT License. As of May 2019, this is used by 73% of the 10 million most popular websites.';
+var azure =  'A cloud computing service created by Microsoft for building, testing, deploying, and managing applications and services through Microsoft-managed data centers.';
+var bootstrap = 'A free and open-source CSS framework directed at responsive, mobile-first front-end web development. It contains CSS- and JavaScript-based design templates for typography, forms, buttons, navigation, and other interface components.';
+var reactnative = 'Javascript Framework for making mobile apps. It is used to develop applications for Android, Android TV, iOS, macOS, tvOS, Web, Windows and UWP by enabling developers to use Reacts framework along with native platform capabilities.';
+var swift = 'A general-purpose, multi-paradigm, compiled programming language developed by Apple Inc. and the open-source community to create iOS apps.';
+var ionic = 'A complete open-source SDK for hybrid mobile app development. The original version was released in 2013 and built on top of AngularJS and Apache Cordova. Lets developers to ship apps to the app stores and as a PWA with a single code base, usually written in javascript as a progressive web application.';
+var figma =  'A vector graphics editor and prototyping tool which is primarily web-based, with additional offline features enabled by desktop applications for macOS and Windows. The Mirror companion apps for Android and iOS allow viewing prototypes in real-time on mobile devices.';
+var adobe = 'A computer software company focused on making software for content design and creation. Includes apps such as Photoshop, Illustrator, After Effects, Premiere, XD, etc.';
+var website = 'A set of related web pages located under a single domain name, typically produced by a single person or organization. Typically written in HTML, styled and made responsive with CSS or SASS, and made interactive with Javascript or jQuery.';
+var mongodb = 'A source-available cross-platform document-oriented database program. Classified as a NoSQL database program, this uses JSON-like documents with optional schemas.';
+var vuejs = 'An open-source model–view–viewmodel front end JavaScript framework for building user interfaces and single-page applications. It was created by Evan You, and is maintained by him and the rest of the active core team members.';
+var less = 'A CSS Preprocessor, LESSer known than its alternative.';
+var wordpress = 'A free and open-source content management system written in PHP and paired with a MySQL or MariaDB database.';
+var php = 'A general-purpose scripting language especially suited to web development. It was originally created by Danish-Canadian programmer Rasmus Lerdorf in 1994.';
+var coredova = 'The open-source version of PhoneGap, the leading tool for cross-platform app development. Its a write-once, run-anywhere solution specifically designed for mobile.';
+var pwa = 'A Progressive Web Application // A mobile friendly web application.';
+var api = 'An Application Programming Interface.';
+var mariadb = 'A community-developed, commercially supported fork of the MySQL relational database management system, intended to remain free and open-source software.';
+var hosting = 'Service that allows individuals and organizations to make their website accessible via the World Wide Web. Popular companies in this industry include: Godaddy, Squarespace, Shopify, etc.';
+var vscode = 'A free text editor by Microsoft to edit and write code. This program comes with many handy keyboard shortcuts to make the development process much simpler and streamlined.';
+var inspector = 'Sometimes called Developer Tools or just DevTools. This is a feature available in most modern web browsers that allows a user to inspect the individual elements and sources of a website. Many developers teach themselves code by just messing with this.';
+
+// Hints
+function displayHints() {
+    if (randomWord === 'javascript') hints.innerHTML = javascript;
+    if (randomWord === 'python') hints.innerHTML = python;
+    if (randomWord === 'css') hints.innerHTML = css;
+    if (randomWord === 'less') hints.innerHTML = less;
+    if (randomWord === 'sass') hints.innerHTML = sass;
+    if (randomWord === 'react.js') hints.innerHTML = reactjs;
+    if (randomWord === 'reactnative') hints.innerHTML = reactnative;
+    if (randomWord === 'csharp') hints.innerHTML = csharp;
+    if (randomWord === 'html') hints.innerHTML = html;
+    if (randomWord === 'java') hints.innerHTML = java;
+    if (randomWord === 'cplusplus') hints.innerHTML = cplusplus;
+    if (randomWord === 'kotlin') hints.innerHTML = kotlin;
+    if (randomWord === 'sql') hints.innerHTML = sql;
+    if (randomWord === 'ruby') hints.innerHTML = ruby;
+    if (randomWord === 'json') hints.innerHTML = json;
+    if (randomWord === 'node.js') hints.innerHTML = nodejs;
+    if (randomWord === 'vue.js') hints.innerHTML = vuejs;
+    if (randomWord === 'php') hints.innerHTML = php;
+    if (randomWord === 'bootstrap') hints.innerHTML = bootstrap;
+    if (randomWord === 'azure') hints.innerHTML = azure;
+    if (randomWord === 'swift') hints.innerHTML = swift;
+    if (randomWord === 'ionic') hints.innerHTML = ionic;
+    if (randomWord === 'jquery') hints.innerHTML = jquery;
+    if (randomWord === 'figma') hints.innerHTML = figma;
+    if (randomWord === 'adobe') hints.innerHTML = adobe;
+    if (randomWord === 'website') hints.innerHTML = website;
+    if (randomWord === 'mongodb') hints.innerHTML = mongodb;
+    if (randomWord === 'wordpress') hints.innerHTML = wordpress;
+    if (randomWord === 'coredova') hints.innerHTML = coredova;
+    if (randomWord === 'pwa') hints.innerHTML = pwa;
+    if (randomWord === 'api') hints.innerHTML = api;
+    if (randomWord === 'hosting') hints.innerHTML = hosting;
+    if (randomWord === 'mariadb') hints.innerHTML = mariadb;
+    if (randomWord === 'angular.js') hints.innerHTML = angularjs;
+    if (randomWord === 'vscode') hints.innerHTML = vscode;
+    if (randomWord === 'inspector') hints.innerHTML = inspector;
+}
+
+// Possible Words
+for (var j = 0; j < gameWords.length; j++) {
+    var possibleWordDiv = document.createElement('div');
+    possibleWordDiv.classList.add('word');
+    possibleWordDiv.classList.add(gameWords[j]);
+    possibleWordDiv.innerHTML = ' | ' + gameWords[j] + ' | ';
+    possibleWords.appendChild(possibleWordDiv);
+
+    var definitions = [javascript,python,csharp,css,sql,ruby,kotlin,html,json,java,cplusplus,sass,reactjs,angularjs,nodejs,jquery,azure,bootstrap,reactnative,swift,ionic,figma,adobe,website,mongodb,vuejs,less,wordpress,php,coredova,pwa,api,mariadb,hosting,vscode,inspector];
+
+    var words = document.querySelectorAll('.word');
+    words.forEach(word => {
+        words[j].setAttribute('title',definitions[j]);
+        words[j].setAttribute('alt',gameWords[j]);
+    });
+}
 
 // Random Word Generation
 function randomWordGenerator() {
@@ -148,51 +244,8 @@ function renderUserPoints() {
         handleChosenLetter(chosenLetter);
     });
 
-    // Possible Words
-    for (var j = 0; j < gameWords.length; j++) {
-        var possibleWordDiv = document.createElement('div');
-        possibleWordDiv.classList.add('word');
-        possibleWordDiv.innerHTML = ' | ' + gameWords[j] + ' | ';
-        possibleWords.appendChild(possibleWordDiv);
-    }
     // Hints
-    var javascript = 'The most wideley used scripting language for the web to manipulate theDOM.'
-    if (randomWord === 'javascript') hints.innerHTML = javascript;
-    if (randomWord === 'python') hints.innerHTML = 'The most popular programming language in the world, can be used to make anything. NAMED AFTER A REPTILE.';
-    if (randomWord === 'css') hints.innerHTML = 'Cascading Style Sheets, how we style the html we put on a page.';
-    if (randomWord === 'less') hints.innerHTML = 'A CSS Preprocessor, LESSer known than its alternative.';
-    if (randomWord === 'sass') hints.innerHTML = 'A CSS Preprocessor, makes writing CSS much more modular.';
-    if (randomWord === 'react.js') hints.innerHTML = 'Front-end JavaScript library for building user interfaces or UI components. Owned & Maintained by Facebook.';
-    if (randomWord === 'reactnative') hints.innerHTML = 'Javascript Framework for making mobile apps. It is used to develop applications for Android, Android TV, iOS, macOS, tvOS, Web, Windows and UWP by enabling developers to use Reacts framework along with native platform capabilities.';
-    if (randomWord === 'csharp') hints.innerHTML = 'A very popular programming language in the C family, the main language used in Unity to make video games.';
-    if (randomWord === 'html') hints.innerHTML = 'The most widely used language for websites, every website has this as the basic skeleton for their content.';
-    if (randomWord === 'java') hints.innerHTML = 'Commonly mistaken for another popular web scripting language, this is a backend language used to manipulate data.';
-    if (randomWord === 'cplusplus') hints.innerHTML = 'A very powerful programming language in the C family used to make the more advanced applications as well as some of the most popular console games.';
-    if (randomWord === 'kotlin') hints.innerHTML = 'A cross-platform, statically typed, general-purpose programming language with type inference.';
-    if (randomWord === 'sql') hints.innerHTML = 'A domain-specific language used in programming and designed for managing data held in a relational database management system, or for stream processing in a relational data stream management system.';
-    if (randomWord === 'ruby') hints.innerHTML = 'Designed and developed in the mid-1990s by Yukihiro "Matz" Matsumoto in Japan. Dynamically typed and uses garbage collection and just-in-time compilation.';
-    if (randomWord === 'json') hints.innerHTML = 'An open standard file format and data interchange format that uses human-readable text to store and transmit data objects consisting of attribute–value pairs and arrays.';
-    if (randomWord === 'node.js') hints.innerHTML = 'An open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.';
-    if (randomWord === 'vue.js') hints.innerHTML = 'An open-source model–view–viewmodel front end JavaScript framework for building user interfaces and single-page applications. It was created by Evan You, and is maintained by him and the rest of the active core team members.';
-    if (randomWord === 'php') hints.innerHTML = 'A general-purpose scripting language especially suited to web development. It was originally created by Danish-Canadian programmer Rasmus Lerdorf in 1994.';
-    if (randomWord === 'bootstrap') hints.innerHTML = 'A free and open-source CSS framework directed at responsive, mobile-first front-end web development. It contains CSS- and JavaScript-based design templates for typography, forms, buttons, navigation, and other interface components.';
-    if (randomWord === 'azure') hints.innerHTML = 'A cloud computing service created by Microsoft for building, testing, deploying, and managing applications and services through Microsoft-managed data centers.';
-    if (randomWord === 'swift') hints.innerHTML = 'A general-purpose, multi-paradigm, compiled programming language developed by Apple Inc. and the open-source community to create iOS apps.';
-    if (randomWord === 'ionic') hints.innerHTML = 'A complete open-source SDK for hybrid mobile app development. The original version was released in 2013 and built on top of AngularJS and Apache Cordova. Lets developers to ship apps to the app stores and as a PWA with a single code base, usually written in javascript as a progressive web application.';
-    if (randomWord === 'jquery') hints.innerHTML = 'A JavaScript library designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and Ajax. It is free, open-source software using the permissive MIT License. As of May 2019, this is used by 73% of the 10 million most popular websites.';
-    if (randomWord === 'figma') hints.innerHTML = 'A vector graphics editor and prototyping tool which is primarily web-based, with additional offline features enabled by desktop applications for macOS and Windows. The Mirror companion apps for Android and iOS allow viewing prototypes in real-time on mobile devices.';
-    if (randomWord === 'adobe') hints.innerHTML = 'A computer software company focused on making software for content design and creation. Includes apps such as Photoshop, Illustrator, After Effects, Premiere, XD, etc.';
-    if (randomWord === 'website') hints.innerHTML = 'A set of related web pages located under a single domain name, typically produced by a single person or organization. Typically written in HTML, styled and made responsive with CSS or SASS, and made interactive with Javascript or jQuery.';
-    if (randomWord === 'mongodb') hints.innerHTML = 'A source-available cross-platform document-oriented database program. Classified as a NoSQL database program, this uses JSON-like documents with optional schemas.';
-    if (randomWord === 'wordpress') hints.innerHTML = 'A free and open-source content management system written in PHP and paired with a MySQL or MariaDB database.';
-    if (randomWord === 'coredova') hints.innerHTML = 'The open-source version of PhoneGap, the leading tool for cross-platform app development. Its a write-once, run-anywhere solution specifically designed for mobile.';
-    if (randomWord === 'pwa') hints.innerHTML = 'A Progressive Web Application // A mobile friendly web application.';
-    if (randomWord === 'api') hints.innerHTML = 'An Application Programming Interface.';
-    if (randomWord === 'hosting') hints.innerHTML = 'Service that allows individuals and organizations to make their website accessible via the World Wide Web. Popular companies in this industry include: Godaddy, Squarespace, Shopify, etc.';
-    if (randomWord === 'mariadb') hints.innerHTML = 'A community-developed, commercially supported fork of the MySQL relational database management system, intended to remain free and open-source software.';
-    if (randomWord === 'angular.js') hints.innerHTML = 'A JavaScript-based open-source front-end web framework for developing single-page applications. It is maintained mainly by Google and a community of individuals and corporations.';
-    if (randomWord === 'vscode') hints.innerHTML = 'A free text editor by Microsoft to edit and write code. This program comes with many handy keyboard shortcuts to make the development process much simpler and streamlined.';
-    if (randomWord === 'inspector') hints.innerHTML = 'Sometimes called Developer Tools or just DevTools. This is a feature available in most modern web browsers that allows a user to inspect the individual elements and sources of a website. Many developers teach themselves code by just messing with this.';
+    displayHints();
 
     // Start Timer on Button Click
     var countDownTimer = setInterval(function(guessBlanks) {
@@ -334,51 +387,8 @@ startButton.addEventListener('click', function startGame(event) {
         }
     });
 
-    // Possible Words
-    for (var j = 0; j < gameWords.length; j++) {
-        var possibleWordDiv = document.createElement('div');
-        possibleWordDiv.classList.add('word');
-        possibleWordDiv.innerHTML = ' | ' + gameWords[j] + ' | ';
-        possibleWords.appendChild(possibleWordDiv);
-    }
     // Hints
-    var javascript = 'The most wideley used scripting language for the web to manipulate theDOM.'
-    if (randomWord === 'javascript') hints.innerHTML = javascript;
-    if (randomWord === 'python') hints.innerHTML = 'The most popular programming language in the world, can be used to make anything.';
-    if (randomWord === 'css') hints.innerHTML = 'Cascading Style Sheets, how we style the html we put on a page.';
-    if (randomWord === 'less') hints.innerHTML = 'A CSS Preprocessor, LESSer known than its alternative.';
-    if (randomWord === 'sass') hints.innerHTML = 'A CSS Preprocessor, makes writing CSS much more modular.';
-    if (randomWord === 'react.js') hints.innerHTML = 'Front-end JavaScript library for building user interfaces or UI components. Owned & Maintained by Facebook.';
-    if (randomWord === 'reactnative') hints.innerHTML = 'Javascript Framework for making mobile apps. It is used to develop applications for Android, Android TV, iOS, macOS, tvOS, Web, Windows and UWP by enabling developers to use Reacts framework along with native platform capabilities.';
-    if (randomWord === 'csharp') hints.innerHTML = 'A very popular programming language in the C family, the main language used in Unity to make video games.';
-    if (randomWord === 'html') hints.innerHTML = 'The most widely used language for websites, every website has this as the basic skeleton for their content.';
-    if (randomWord === 'java') hints.innerHTML = 'Commonly mistaken for another popular web scripting language, this is a backend language used to manipulate data.';
-    if (randomWord === 'cplusplus') hints.innerHTML = 'A very powerful programming language in the C family used to make the more advanced applications as well as some of the most popular console games.';
-    if (randomWord === 'kotlin') hints.innerHTML = 'A cross-platform, statically typed, general-purpose programming language with type inference.';
-    if (randomWord === 'sql') hints.innerHTML = 'A domain-specific language used in programming and designed for managing data held in a relational database management system, or for stream processing in a relational data stream management system.';
-    if (randomWord === 'ruby') hints.innerHTML = 'Designed and developed in the mid-1990s by Yukihiro "Matz" Matsumoto in Japan. Dynamically typed and uses garbage collection and just-in-time compilation.';
-    if (randomWord === 'json') hints.innerHTML = 'An open standard file format and data interchange format that uses human-readable text to store and transmit data objects consisting of attribute–value pairs and arrays.';
-    if (randomWord === 'node.js') hints.innerHTML = 'An open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.';
-    if (randomWord === 'vue.js') hints.innerHTML = 'An open-source model–view–viewmodel front end JavaScript framework for building user interfaces and single-page applications. It was created by Evan You, and is maintained by him and the rest of the active core team members.';
-    if (randomWord === 'php') hints.innerHTML = 'A general-purpose scripting language especially suited to web development. It was originally created by Danish-Canadian programmer Rasmus Lerdorf in 1994.';
-    if (randomWord === 'bootstrap') hints.innerHTML = 'A free and open-source CSS framework directed at responsive, mobile-first front-end web development. It contains CSS- and JavaScript-based design templates for typography, forms, buttons, navigation, and other interface components.';
-    if (randomWord === 'azure') hints.innerHTML = 'A cloud computing service created by Microsoft for building, testing, deploying, and managing applications and services through Microsoft-managed data centers.';
-    if (randomWord === 'swift') hints.innerHTML = 'A general-purpose, multi-paradigm, compiled programming language developed by Apple Inc. and the open-source community to create iOS apps.';
-    if (randomWord === 'ionic') hints.innerHTML = 'A complete open-source SDK for hybrid mobile app development. The original version was released in 2013 and built on top of AngularJS and Apache Cordova. Lets developers to ship apps to the app stores and as a PWA with a single code base, usually written in javascript as a progressive web application.';
-    if (randomWord === 'jquery') hints.innerHTML = 'A JavaScript library designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and Ajax. It is free, open-source software using the permissive MIT License. As of May 2019, this is used by 73% of the 10 million most popular websites.';
-    if (randomWord === 'figma') hints.innerHTML = 'A vector graphics editor and prototyping tool which is primarily web-based, with additional offline features enabled by desktop applications for macOS and Windows. The Mirror companion apps for Android and iOS allow viewing prototypes in real-time on mobile devices.';
-    if (randomWord === 'adobe') hints.innerHTML = 'A computer software company focused on making software for content design and creation. Includes apps such as Photoshop, Illustrator, After Effects, Premiere, XD, etc.';
-    if (randomWord === 'website') hints.innerHTML = 'A set of related web pages located under a single domain name, typically produced by a single person or organization. Typically written in HTML, styled and made responsive with CSS or SASS, and made interactive with Javascript or jQuery.';
-    if (randomWord === 'mongodb') hints.innerHTML = 'A source-available cross-platform document-oriented database program. Classified as a NoSQL database program, this uses JSON-like documents with optional schemas.';
-    if (randomWord === 'wordpress') hints.innerHTML = 'A free and open-source content management system written in PHP and paired with a MySQL or MariaDB database.';
-    if (randomWord === 'coredova') hints.innerHTML = 'The open-source version of PhoneGap, the leading tool for cross-platform app development. Its a write-once, run-anywhere solution specifically designed for mobile.';
-    if (randomWord === 'pwa') hints.innerHTML = 'A Progressive Web Application // A mobile friendly web application.';
-    if (randomWord === 'api') hints.innerHTML = 'An Application Programming Interface.';
-    if (randomWord === 'hosting') hints.innerHTML = 'Service that allows individuals and organizations to make their website accessible via the World Wide Web. Popular companies in this industry include: Godaddy, Squarespace, Shopify, etc.';
-    if (randomWord === 'mariadb') hints.innerHTML = 'A community-developed, commercially supported fork of the MySQL relational database management system, intended to remain free and open-source software.';
-    if (randomWord === 'angular.js') hints.innerHTML = 'A JavaScript-based open-source front-end web framework for developing single-page applications. It is maintained mainly by Google and a community of individuals and corporations.';
-    if (randomWord === 'vscode') hints.innerHTML = 'A free text editor by Microsoft to edit and write code. This program comes with many handy keyboard shortcuts to make the development process much simpler and streamlined.';
-    if (randomWord === 'inspector') hints.innerHTML = 'Sometimes called Developer Tools or just DevTools. This is a feature available in most modern web browsers that allows a user to inspect the individual elements and sources of a website. Many developers teach themselves code by just messing with this.';
+    displayHints();
 
     // Start Timer on Button Click
     var countDownTimer = setInterval(function(guessBlanks) {
