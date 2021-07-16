@@ -81,19 +81,35 @@ var moreInfoLinks = [
     'https://www.w3schools.com/sql/sql_quickref.asp', // SQL
     'https://www.ruby-lang.org/en/documentation/', // Ruby
     'https://www.w3schools.com/kotlin/kotlin_examples.php', // Kotlin
-    , // HTML
-    , // JSON
-    , // JAVA
-    , // C++
-    , // SASS
-    , // React.js
-    , // Angular.js
-    , // Node.js
-    , // jQuery
-    , // Azure
-    , // Bootstrap
-    , // React Native
-    , // Swift
+    'https://www.w3schools.com/TAGS/default.ASP', // HTML
+    'https://www.w3schools.com/jsref/jsref_obj_json.asp', // JSON
+    'https://www.w3schools.com/java/java_ref_keywords.asp', // JAVA
+    'https://www.w3schools.com/cpp/cpp_references.asp', // C++
+    'https://www.w3schools.com/sass/', // SASS
+    'https://www.w3schools.com/react/', // React.js
+    'https://www.w3schools.com/angular/angular_intro.asp', // Angular.js
+    'https://www.w3schools.com/nodejs/nodejs_intro.asp', // Node.js
+    'https://www.w3schools.com/jquery/jquery_ref_overview.asp', // jQuery
+    'https://searchcloudcomputing.techtarget.com/definition/Windows-Azure', // Azure
+    'https://www.w3schools.com/bootstrap/', // Bootstrap
+    'https://www.tutorialspoint.com/react_native/index.htm', // React Native
+    'https://www.w3schools.in/swift-tutorial/', // Swift
+    'https://ionicframework.com/', // Ionic
+    'https://www.figma.com/', // Figma
+    'https://www.adobe.com/', // Adobe
+    'https://en.wikipedia.org/wiki/Website', // Website
+    'https://www.mongodb.com/', // MongoDB
+    'https://vuejs.org/', // Vue.js
+    'https://lesscss.org/', // LESS
+    'https://wordpress.com/', // Wordpress
+    'https://www.php.net/', // php
+    'https://cordova.apache.org/', // Coredova
+    'https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps', // PWA
+    "https://www.mulesoft.com/resources/api/what-is-an-api#:~:text=API%20is%20the%20acronym%20for,you're%20using%20an%20API.", // API
+    'https://mariadb.org/', // MariaDB
+    'https://www.namecheap.com/hosting/what-is-web-hosting-definition/', // Hosting
+    'https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf', // VS Code
+    'https://developer.chrome.com/docs/devtools/' // Inspector
 ]
 
 // Hints
@@ -141,7 +157,7 @@ for (var j = 0; j < gameWords.length; j++) {
     var possibleWordDiv = document.createElement('a');
     possibleWordDiv.classList.add('word');
     possibleWordDiv.classList.add(gameWords[j]);
-    possibleWordDiv.innerHTML = ' - ' + gameWords[j] + ' - ';
+    possibleWordDiv.innerHTML = ' | - ' + gameWords[j] + ' - | ';
     possibleWords.appendChild(possibleWordDiv);
 
     var definitions = [javascript,python,csharp,css,sql,ruby,kotlin,html,json,java,cplusplus,sass,reactjs,angularjs,nodejs,jquery,azure,bootstrap,reactnative,swift,ionic,figma,adobe,website,mongodb,vuejs,less,wordpress,php,coredova,pwa,api,mariadb,hosting,vscode,inspector];
@@ -477,9 +493,7 @@ startButton.addEventListener('click', function startGame(event) {
             userLosses++;
             localStorage.setItem('User Losses', userLosses);
             losses.innerHTML = userLosses;
-
         }
-
         // End Count Down Timer Interval Function
     }, 1000); // Sets the function to run on a 1000 ms // 1 second delay
 
