@@ -157,6 +157,13 @@ function renderUserPoints() {
             titleText.innerHTML = 'You Guessed It!';
             timer.innerHTML = timeRemaining;
             startButton.innerHTML = 'Time Left: ' + timeRemaining;
+            startButton.style.background = '#00cc80';
+            var yellowBG1 = document.getElementById('card');
+            var yellowBG2 = document.getElementById('score');
+            var startButtonAddClass = document.getElementById('startButton');
+            yellowBG1.classList.add('victory');
+            yellowBG2.classList.add('victory');
+            startButtonAddClass.classList.add('victory');
             setTimeout(function reloadGame() {
                 location.reload(true);
             }, 1500);
@@ -200,9 +207,16 @@ function renderUserPoints() {
         userPointScore = 0;
         points.innerHTML = userPointScore;
         localStorage.setItem('User Points', userPointScore);
+        var yellowBG1 = document.getElementById('card');
+        var yellowBG2 = document.getElementById('score');
+        var startButtonAddClass = document.getElementById('startButton');
+        yellowBG1.classList.add('victory');
+        yellowBG2.classList.add('victory');
+        startButtonAddClass.classList.add('victory');
         titleText.innerHTML = 'VICTORY!';
         secondsRemaining.innerHTML = 'Congratulations!';
         wordBlanks.innerHTML = 'You Win! Reloading Game...';
+        startButton.innerHTML = 'Reinitializing...';
         setTimeout(function reloadGame() {
             location.reload(true);
         }, 3000);
@@ -270,6 +284,13 @@ startButton.addEventListener('click', function startGame(event) {
             titleText.innerHTML = 'You Guessed It!';
             timer.innerHTML = timeRemaining;
             startButton.innerHTML = 'Time Left: ' + timeRemaining;
+            startButton.style.background = '#00cc80';
+            var yellowBG1 = document.getElementById('card');
+            var yellowBG2 = document.getElementById('score');
+            var startButtonAddClass = document.getElementById('startButton');
+            yellowBG1.classList.add('victory');
+            yellowBG2.classList.add('victory');
+            startButtonAddClass.classList.add('victory');
             setTimeout(function reloadGame() {
                 location.reload(true);
             }, 1500);

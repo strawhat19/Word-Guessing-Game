@@ -11,18 +11,18 @@
   <body>
     <header>
       <div class= "large-font">Word Guess Game</div>
-      <button class="start-button">Start</button>
+      <button id="startButton" class="start-button">Start</button>
     </header>
 
     <main>
       <section>
-        <div class="card word-guess">
+        <div id="card" class="card word-guess">
           <div class="large-font word-blanks">J _ v _ S c r_ _t</div>
         </div>
       </section>
 
       <section>
-        <div class="card results">
+        <div id="score" class="card results">
           <div class = "win-loss-container">
           <div>
           <h2>Wins: <span class="win">0</span> | <span class="points">Points: <span class="point-score">0</span></span></h2>
@@ -30,7 +30,7 @@
         </div>
           <button class="reset-button">Reset Score</button>
       </div>
-          <div class= "card timer">
+          <div class="card timer">
             <div class = "timer-text">
             <div class="large-font timer-count">10</div>
             <h3>seconds remaining</h3>

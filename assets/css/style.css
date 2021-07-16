@@ -25,6 +25,36 @@ body {
   margin-top: 16px;
 }
 
+.victory {
+  background: #00cc80 !important;
+  /* background-size: 1800% 1800% !important;
+  -webkit-animation: rainbow 4s ease infinite !important;
+  -z-animation: rainbow 4s ease infinite !important;
+  -o-animation: rainbow 4s ease infinite !important;
+  animation: rainbow 4s ease infinite !important; */
+}
+
+/* @-webkit-keyframes rainbow {
+  0%{background-position:0% 82%}
+  50%{background-position:100% 19%}
+  100%{background-position:0% 82%}
+}
+@-moz-keyframes rainbow {
+  0%{background-position:0% 82%}
+  50%{background-position:100% 19%}
+  100%{background-position:0% 82%}
+}
+@-o-keyframes rainbow {
+  0%{background-position:0% 82%}
+  50%{background-position:100% 19%}
+  100%{background-position:0% 82%}
+}
+@keyframes rainbow { 
+  0%{background-position:0% 82%}
+  50%{background-position:100% 19%}
+  100%{background-position:0% 82%}
+} */
+
 button {
   background: radial-gradient(circle, rgba(240,230,140,1) 0%, rgba(187,96,33,0.9542191876750701) 100%);
   border-radius: 8px;
