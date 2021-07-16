@@ -134,6 +134,72 @@ function renderUserWins() {
 function renderUserPoints() {
     userPoints = localStorage.getItem('User Points');
     if (userPoints > 0) {
+        
+        setTimeout(function startGame() {
+            // Declaring Chosen Letter Variable on Key Down Press
+    var chosenLetter = document.addEventListener('keydown',function(event){
+        chosenLetter = event.key;
+        console.log(chosenLetter);
+        handleChosenLetter(chosenLetter);
+    });
+
+    // Start Timer on Button Click
+    var countDownTimer = setInterval(function(guessBlanks) {
+
+        // Decrement the Timer to Count Downwards
+        timeRemaining--;
+
+        // If the Timer is Above 0
+        if (timeRemaining >= 0) {
+            titleText.innerHTML = 'Guess The Word';
+            timer.innerHTML = timeRemaining;
+            startButton.classList.add('activeGameButton');
+            startButton.innerHTML = 'In Game ' + timeRemaining;
+        }
+
+        // If User Wins
+        if (isWin) {
+            wordBlanks.innerHTML = randomWord;
+            clearInterval(countDownTimer);
+            titleText.innerHTML = 'You Guessed It!';
+            timer.innerHTML = timeRemaining;
+            startButton.innerHTML = 'Time Left: ' + timeRemaining;
+            setTimeout(function reloadGame() {
+                location.reload(true);
+            }, 3000);
+            return;
+        }
+    
+
+        // If the Timer Hits 0
+        if (timeRemaining === 0) {
+
+            // Defeat Screen
+            titleText.innerHTML = 'DEFEAT';
+            timer.innerHTML = 'GGWP';
+            secondsRemaining.innerHTML = 'Game Over!';
+            clearInterval(countDownTimer);
+
+            // Initiate Begin Game Button as Restart Game Button
+            startButton.classList.remove('activeGameButton');
+            startButton.setAttribute('href','/');
+            startButton.innerHTML = 'Again?';
+            startButton.addEventListener('click', function reloadGame(event) {
+                // Hard Refreshes the Current Page
+                location.reload(true);
+            })
+
+            // Store Loss Local Storage
+            userLosses++;
+            localStorage.setItem('User Losses', userLosses);
+            losses.innerHTML = userLosses;
+
+        }
+
+        // End Count Down Timer Interval Function
+    }, 1000); // Sets the function to run on a 1000 ms // 1 second delay
+        }, 100);
+        
     points.innerHTML = userPoints;
     } else {
         points.innerHTML = 0;
@@ -168,7 +234,7 @@ resetScoreButton.addEventListener('click', function resetScoreButtonClicked(even
 })
 
 // Start Game on Button Click
-startButton.addEventListener('click', function(event) {
+startButton.addEventListener('click', function startGame(event) {
 
     // Begin Game Function
     // Declaring Chosen Letter Variable on Key Down Press
@@ -199,8 +265,12 @@ startButton.addEventListener('click', function(event) {
             titleText.innerHTML = 'You Guessed It!';
             timer.innerHTML = timeRemaining;
             startButton.innerHTML = 'Time Left: ' + timeRemaining;
+            setTimeout(function reloadGame() {
+                location.reload(true);
+            }, 5000);
             return;
         }
+    
 
         // If the Timer Hits 0
         if (timeRemaining === 0) {
@@ -215,7 +285,7 @@ startButton.addEventListener('click', function(event) {
             startButton.classList.remove('activeGameButton');
             startButton.setAttribute('href','/');
             startButton.innerHTML = 'Again?';
-            startButton.addEventListener('click', function(event) {
+            startButton.addEventListener('click', function reloadGame(event) {
                 // Hard Refreshes the Current Page
                 location.reload(true);
             })
