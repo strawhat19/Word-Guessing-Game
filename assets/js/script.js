@@ -36,7 +36,7 @@ renderUserWins();
 renderUserPoints();
 
 // Hint Definitions
-var javascript = 'The most wideley used scripting language for the web to manipulate theDOM.';
+var javascript = 'The most wideley used scripting language for the web to manipulate the DOM.';
 var python = 'The most popular programming language in the world, can be used to make anything. NAMED AFTER A REPTILE.';
 var csharp = 'A very popular programming language in the C family, the main language used in Unity to make video games.';
 var css = 'Cascading Style Sheets, how we style the html we put on a page.';
